@@ -168,7 +168,7 @@ public class UncraftingGui extends AbstractContainerScreen<UncraftingContainer> 
 		UncraftingContainer container = this.menu;
 
 		for (int i = 0; i < 9; i++) {
-			if (container.getCarried().isEmpty() && container.slots.get(2 + i).hasItem() && this.hoveredSlot == container.slots.get(11 + i)) {
+			if (container.getCarried().isEmpty() && container.slots.get(2 + i).hasItem() && this.hoveredSlot == container.slots.get(11 + i) && !this.hoveredSlot.hasItem()) {
 				this.renderTooltip(pPoseStack, container.slots.get(2 + i).getItem(), pX, pY);
 			}
 		}
