@@ -241,6 +241,7 @@ public class UncraftingContainer extends AbstractContainerMenu {
 				if (inputTags != null) {
 					// remove enchantments, copy tags, re-add filtered enchantments
 					inputTags.remove("ench");
+					inputTags.remove("Damage");
 					result.setTag(inputTags);
 					EnchantmentHelper.setEnchantments(inputEnchantments, result);
 				}
