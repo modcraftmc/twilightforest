@@ -11,6 +11,7 @@ import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.entity.BannerPattern;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
@@ -69,6 +70,13 @@ public class TFClientSetup {
 
         TwilightForestRenderInfo renderInfo = new TwilightForestRenderInfo(128.0F, false, DimensionSpecialEffects.SkyType.NONE, false, false);
         DimensionSpecialEffects.EFFECTS.put(TwilightForestMod.prefix("renderer"), renderInfo);
+
+		for(BannerPattern pattern : BannerPattern.values()) {
+			if(pattern.getFilename().startsWith(TwilightForestMod.ID)) {
+				Sheets.BANNER_MATERIALS.put(pattern, Sheets.createBannerMaterial(pattern));
+				Sheets.SHIELD_MATERIALS.put(pattern, Sheets.createShieldMaterial(pattern));
+			}
+		}
 
         evt.enqueueWork(() -> {
             Sheets.addWoodType(TFBlocks.TWILIGHT_OAK);
