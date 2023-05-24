@@ -164,6 +164,17 @@ public class BlockstateGenerator extends BlockModelBuilders {
 		getMultipartBuilder(TFBlocks.SNOWY_LEAVES.get()).part().modelFile(noSnow).addModel().end()
 				.part().modelFile(snowy).addModel().condition(SnowyLeavesBlock.SNOWY, true).end();
 
+		getVariantBuilder(TFBlocks.GLACIALIS.get()).forAllStates(state -> {
+			String snowLayerName = "glacialis_snow_layer_" + state.getValue(SnowLoggable.SNOW_LAYERS);
+			String glacialisName = TFBlocks.GLACIALIS.getId().getPath() + "_flower" + state.getValue(SnowLoggable.SNOW_LAYERS);
+			BlockModelBuilder glacialisFile = models().cross(TFBlocks.GLACIALIS.getId().getPath(), blockTexture(TFBlocks.GLACIALIS.get())).renderType(CUTOUT);
+			if (state.getValue(SnowLoggable.SNOW_LAYERS) == 0) {
+				return ConfiguredModel.builder().modelFile(glacialisFile).build();
+			}
+			BlockModelBuilder snowLayerFile = models().withExistingParent("snow_layer_" + state.getValue(SnowLoggable.SNOW_LAYERS), new ResourceLocation(state.getValue(SnowLoggable.SNOW_LAYERS) == 8 ? "block/snow_block" : "block/snow_height" + (state.getValue(SnowLoggable.SNOW_LAYERS) * 2)));
+			return ConfiguredModel.builder().modelFile(models().cross(glacialisName, blockTexture(TFBlocks.GLACIALIS.get())).renderType(CUTOUT).customLoader(CompositeModelBuilder::begin).child(glacialisName, glacialisFile).child(snowLayerName, snowLayerFile).end()).build();
+		});
+
 		simpleBlock(TFBlocks.THORN_LEAVES.get(), models().withExistingParent("thorn_leaves", new ResourceLocation("block/oak_leaves")));
 		simpleBlock(TFBlocks.BEANSTALK_LEAVES.get(), models().withExistingParent("beanstalk_leaves", new ResourceLocation("block/azalea_leaves")));
 		simpleBlock(TFBlocks.HOLLOW_OAK_SAPLING.get(), models().cross(TFBlocks.HOLLOW_OAK_SAPLING.getId().getPath(), blockTexture(TFBlocks.HOLLOW_OAK_SAPLING.get())).renderType(CUTOUT));
@@ -394,6 +405,7 @@ public class BlockstateGenerator extends BlockModelBuilders {
 		simpleBlock(TFBlocks.POTTED_THORN.get(), models().withExistingParent(TFBlocks.POTTED_THORN.getId().getPath(), prefix("block/potted_thorn_template")).texture("thorn_top", prefix("block/brown_thorns_top")).texture("thorn_side", prefix("block/brown_thorns_side")));
 		simpleBlock(TFBlocks.POTTED_GREEN_THORN.get(), models().withExistingParent(TFBlocks.POTTED_THORN.getId().getPath(), prefix("block/potted_thorn_template")).texture("thorn_top", prefix("block/green_thorns_top")).texture("thorn_side", prefix("block/green_thorns_side")));
 		simpleBlock(TFBlocks.POTTED_DEAD_THORN.get(), models().withExistingParent(TFBlocks.POTTED_THORN.getId().getPath(), prefix("block/potted_thorn_template")).texture("thorn_top", prefix("block/burnt_thorns_top")).texture("thorn_side", prefix("block/burnt_thorns_side")));
+		simpleBlock(TFBlocks.POTTED_GLACIALIS.get(), models().withExistingParent(TFBlocks.POTTED_GLACIALIS.getId().getPath(), "block/flower_pot_cross").renderType(CUTOUT).texture("plant", blockTexture(TFBlocks.GLACIALIS.get())));
 
 		builtinEntity(TFBlocks.TWILIGHT_OAK_SIGN.get(), "twilightforest:block/wood/planks_twilight_oak_0");
 		builtinEntity(TFBlocks.TWILIGHT_WALL_SIGN.get(), "twilightforest:block/wood/planks_twilight_oak_0");
@@ -1699,7 +1711,8 @@ public class BlockstateGenerator extends BlockModelBuilders {
 
 		this.getVariantBuilder(horizontalHollowLog.get()).forAllStates(state -> ConfiguredModel.builder().modelFile((switch (state.getValue(HollowLogHorizontal.VARIANT)) {
 			case MOSS -> models().getBuilder(horizontalHollowLog.getId().getPath() + "_moss").parent(mossLog);
-			case MOSS_AND_GRASS -> models().getBuilder(horizontalHollowLog.getId().getPath() + "_moss_grass").parent(grassLog);
+			case MOSS_AND_GRASS ->
+					models().getBuilder(horizontalHollowLog.getId().getPath() + "_moss_grass").parent(grassLog);
 			case SNOW -> models().getBuilder(horizontalHollowLog.getId().getPath() + "_snow").parent(snowLog);
 			default -> models().getBuilder(horizontalHollowLog.getId().getPath()).parent(emptyLog);
 		}).renderType(CUTOUT).texture("top", top).texture("side", side).texture("inner", inner)).rotationY(state.getValue(HollowLogHorizontal.HORIZONTAL_AXIS) == Direction.Axis.X ? 90 : 0).build());
@@ -1708,7 +1721,8 @@ public class BlockstateGenerator extends BlockModelBuilders {
 
 		this.getVariantBuilder(climbableHollowLog.get()).forAllStates(state -> ConfiguredModel.builder().modelFile((switch (state.getValue(HollowLogClimbable.VARIANT)) {
 			case VINE -> models().getBuilder(climbableHollowLog.getId().getPath() + "_vine").parent(vineLog);
-			case LADDER, LADDER_WATERLOGGED -> models().getBuilder(climbableHollowLog.getId().getPath() + "_ladder").parent(ladderLog);
+			case LADDER, LADDER_WATERLOGGED ->
+					models().getBuilder(climbableHollowLog.getId().getPath() + "_ladder").parent(ladderLog);
 		}).renderType(CUTOUT).texture("top", top).texture("side", side).texture("inner", inner)).rotationY((int) state.getValue(HollowLogClimbable.FACING).toYRot()).uvLock(true).build());
 	}
 
@@ -1719,7 +1733,8 @@ public class BlockstateGenerator extends BlockModelBuilders {
 
 		this.getVariantBuilder(horizontalHollowLog.get()).forAllStates(state -> ConfiguredModel.builder().modelFile((switch (state.getValue(HollowLogHorizontal.VARIANT)) {
 			case MOSS -> models().getBuilder(horizontalHollowLog.getId().getPath() + "_moss").parent(mossLog);
-			case MOSS_AND_GRASS -> models().getBuilder(horizontalHollowLog.getId().getPath() + "_moss_grass").parent(grassLog);
+			case MOSS_AND_GRASS ->
+					models().getBuilder(horizontalHollowLog.getId().getPath() + "_moss_grass").parent(grassLog);
 			case SNOW -> models().getBuilder(horizontalHollowLog.getId().getPath() + "_snow").parent(snowLog);
 			default -> models().getBuilder(horizontalHollowLog.getId().getPath()).parent(emptyLog);
 		}).renderType(CUTOUT).texture("top", top).texture("side", side).texture("inner", inner)).rotationY(state.getValue(HollowLogHorizontal.HORIZONTAL_AXIS) == Direction.Axis.X ? 90 : 0).build());
@@ -1728,7 +1743,8 @@ public class BlockstateGenerator extends BlockModelBuilders {
 
 		this.getVariantBuilder(climbableHollowLog.get()).forAllStates(state -> ConfiguredModel.builder().modelFile((switch (state.getValue(HollowLogClimbable.VARIANT)) {
 			case VINE -> models().getBuilder(climbableHollowLog.getId().getPath() + "_vine").parent(vineLog);
-			case LADDER, LADDER_WATERLOGGED -> models().getBuilder(climbableHollowLog.getId().getPath() + "_ladder").parent(ladderLog);
+			case LADDER, LADDER_WATERLOGGED ->
+					models().getBuilder(climbableHollowLog.getId().getPath() + "_ladder").parent(ladderLog);
 		}).renderType(CUTOUT).texture("top", top).texture("side", side).texture("inner", inner)).rotationY((int) state.getValue(HollowLogClimbable.FACING).toYRot()).uvLock(true).build());
 	}
 
