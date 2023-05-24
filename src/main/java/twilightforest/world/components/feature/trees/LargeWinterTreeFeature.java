@@ -73,7 +73,7 @@ public class LargeWinterTreeFeature extends TFTreeFeature<TFTreeFeatureConfig> {
 		int branchLength = radius > 4 ? radius - 1 : radius - 2;
 
 		switch (pos.getY() % 2) {
-			case 0:
+			case 0 -> {
 				// branches
 				for (int i = 1; i <= branchLength; i++) {
 					this.placeLogAt(trunkPlacer, rand, pos.offset(-i, 0, 0), Direction.Axis.X, config);
@@ -81,15 +81,15 @@ public class LargeWinterTreeFeature extends TFTreeFeature<TFTreeFeatureConfig> {
 					this.placeLogAt(trunkPlacer, rand, pos.offset(i + 1, 0, 1), Direction.Axis.X, config);
 					this.placeLogAt(trunkPlacer, rand, pos.offset(1, 0, -i), Direction.Axis.Z, config);
 				}
-				break;
-			case 1:
+			}
+			case 1 -> {
 				for (int i = 1; i <= branchLength; i++) {
 					this.placeLogAt(trunkPlacer, rand, pos.offset(-1, 0, 1), Direction.Axis.X, config);
 					this.placeLogAt(trunkPlacer, rand, pos.offset(1, 0, i + 1), Direction.Axis.Z, config);
 					this.placeLogAt(trunkPlacer, rand, pos.offset(i + 1, 0, 0), Direction.Axis.X, config);
 					this.placeLogAt(trunkPlacer, rand, pos.offset(0, 0, -i), Direction.Axis.Z, config);
 				}
-				break;
+			}
 		}
 	}
 

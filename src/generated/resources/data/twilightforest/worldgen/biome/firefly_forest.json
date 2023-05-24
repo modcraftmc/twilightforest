@@ -86,7 +86,7 @@
       "twilightforest:default_fallen_logs"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "twilightforest:improved_top_layer_freeze"
     ]
   ],
   "has_precipitation": true,

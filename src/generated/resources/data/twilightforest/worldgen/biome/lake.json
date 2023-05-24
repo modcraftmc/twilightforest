@@ -43,9 +43,6 @@
     [
       "minecraft:seagrass_deep",
       "minecraft:seagrass_simple"
-    ],
-    [
-      "minecraft:freeze_top_layer"
     ]
   ],
   "has_precipitation": true,

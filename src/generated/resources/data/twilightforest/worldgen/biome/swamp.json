@@ -81,7 +81,7 @@
       "minecraft:patch_waterlily"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "twilightforest:improved_top_layer_freeze"
     ]
   ],
   "has_precipitation": true,

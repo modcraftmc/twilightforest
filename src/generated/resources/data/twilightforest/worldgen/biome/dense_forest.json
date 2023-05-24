@@ -82,7 +82,7 @@
       "twilightforest:tree/forest_canopy_oak_tree"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "twilightforest:improved_top_layer_freeze"
     ]
   ],
   "has_precipitation": true,

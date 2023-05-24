@@ -83,7 +83,7 @@ public final class TFConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> VANILLA_ROOTS = registerKey("vanilla_roots");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> WEBS = registerKey("webs");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> WOOD_ROOTS_SPREAD = registerKey("ore/wood_roots_spread");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> SNOW_UNDER_TREES = registerKey("snow_under_trees");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> IMPROVED_TOP_LAYER_FREEZE = registerKey("improved_top_layer_freeze");
 
 	//fallen logs!
 	public static final ResourceKey<ConfiguredFeature<?, ?>> TF_OAK_FALLEN_LOG = registerKey("tf_oak_fallen_log");
@@ -252,7 +252,7 @@ public final class TFConfiguredFeatures {
 		context.register(VANILLA_ROOTS, new ConfiguredFeature<>(TFFeatures.UNDERGROUND_PLANTS.get(), new BlockStateConfiguration(Blocks.HANGING_ROOTS.defaultBlockState())));
 		context.register(WEBS, new ConfiguredFeature<>(TFFeatures.WEBS.get(), NoneFeatureConfiguration.NONE));
 		context.register(WOOD_ROOTS_SPREAD, new ConfiguredFeature<>(TFFeatures.WOOD_ROOTS.get(), new RootConfig(TreeDecorators.ROOT_BLEND_PROVIDER, BlockStateProvider.simple(TFBlocks.LIVEROOT_BLOCK.get()))));
-		context.register(SNOW_UNDER_TREES, new ConfiguredFeature<>(TFFeatures.SNOW_UNDER_TREES.get(), NoneFeatureConfiguration.NONE));
+		context.register(IMPROVED_TOP_LAYER_FREEZE, new ConfiguredFeature<>(TFFeatures.IMPROVED_TOP_LAYER_FREEZE.get(), NoneFeatureConfiguration.NONE));
 
 		context.register(TF_OAK_FALLEN_LOG, new ConfiguredFeature<>(TFFeatures.FALLEN_SMALL_LOG.get(), new HollowLogConfig(TFBlocks.TWILIGHT_OAK_LOG.get().defaultBlockState(), TFBlocks.HOLLOW_TWILIGHT_OAK_LOG_HORIZONTAL.get().defaultBlockState())));
 		context.register(CANOPY_FALLEN_LOG, new ConfiguredFeature<>(TFFeatures.FALLEN_SMALL_LOG.get(), new HollowLogConfig(TFBlocks.CANOPY_LOG.get().defaultBlockState(), TFBlocks.HOLLOW_CANOPY_LOG_HORIZONTAL.get().defaultBlockState())));

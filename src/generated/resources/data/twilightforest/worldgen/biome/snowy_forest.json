@@ -50,11 +50,11 @@
     [],
     [
       "twilightforest:tree/selector/snowy_forest_trees",
-      "twilightforest:spruce_fallen_log"
+      "twilightforest:spruce_fallen_log",
+      "twilightforest:glacialis_patch"
     ],
     [
-      "twilightforest:snow_under_trees",
-      "minecraft:freeze_top_layer"
+      "twilightforest:improved_top_layer_freeze"
     ]
   ],
   "has_precipitation": true,

@@ -49,7 +49,7 @@ public class TFFeatures {
 	public static final RegistryObject<Feature<SwizzleConfig>> SIMPLE_WELL = FEATURES.register("simple_well", () -> new SimpleWellFeature(SwizzleConfig.CODEC));
 	public static final RegistryObject<Feature<SwizzleConfig>> FANCY_WELL = FEATURES.register("fancy_well", () -> new FancyWellFeature(SwizzleConfig.CODEC));
 	public static final RegistryObject<Feature<RootConfig>> WOOD_ROOTS = FEATURES.register("wood_roots", () -> new WoodRootFeature(RootConfig.CODEC));
-	public static final RegistryObject<Feature<NoneFeatureConfiguration>> SNOW_UNDER_TREES = FEATURES.register("snow_under_trees", () -> new SnowUnderTreeFeature(NoneFeatureConfiguration.CODEC));
+	public static final RegistryObject<Feature<NoneFeatureConfiguration>> IMPROVED_TOP_LAYER_FREEZE = FEATURES.register("improved_top_layer_freeze", () -> new SnowUnderTreeFeature(NoneFeatureConfiguration.CODEC));
 	public static final RegistryObject<Feature<TreeConfiguration>> SNOW_TREE = FEATURES.register("anywhere_tree", () -> new SnowTreeFeature(TreeConfiguration.CODEC));
 	public static final RegistryObject<Feature<RandomPatchConfiguration>> DARK_FOREST_PLACER = FEATURES.register("dark_forest_placer", () -> new DarkForestFeature(RandomPatchConfiguration.CODEC));
 }
