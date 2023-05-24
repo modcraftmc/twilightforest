@@ -169,10 +169,7 @@ public class EntityEvents {
 		BlockPos pos = event.getPos();
 		BlockState state = level.getBlockState(pos);
 
-		if (state.is(Blocks.GRASS) && stack.is(Items.SNOW)) {
-			level.setBlockAndUpdate(pos, TFBlocks.SNOWLOGGED_GRASS.get().defaultBlockState().setValue(SnowLoggable.SNOW_LAYERS, 1));
-			handlePlaceInteraction(event, Blocks.SNOW.defaultBlockState().getSoundType());
-		} else if (state.getBlock() instanceof SnowLoggable && state.getValue(SnowLoggable.SNOW_LAYERS) < 8 && stack.is(Items.SNOW)) {
+		if (state.getBlock() instanceof SnowLoggable && state.getValue(SnowLoggable.SNOW_LAYERS) < 8 && stack.is(Items.SNOW)) {
 			level.setBlockAndUpdate(pos, state.setValue(SnowLoggable.SNOW_LAYERS, state.getValue(SnowLoggable.SNOW_LAYERS) + 1));
 			handlePlaceInteraction(event, Blocks.SNOW.defaultBlockState().getSoundType());
 		} else if (state.is(Blocks.SNOW) && stack.getItem() instanceof BlockItem block && block.getBlock() instanceof SnowLoggable) {
