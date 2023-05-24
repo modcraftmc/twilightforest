@@ -137,6 +137,8 @@ public class TFBlocks {
 	public static final RegistryObject<Block> FAKE_DIAMOND = BLOCKS.register("fake_diamond", () -> new Block(BlockBehaviour.Properties.of(Material.GLASS).strength(50.0F, 2000.0F).sound(SoundType.METAL).noLootTable()));
 	public static final RegistryObject<Block> EXPERIMENT_115 = BLOCKS.register("experiment_115", Experiment115Block::new);
 
+	//snowy forest
+	public static final RegistryObject<Block> SNOWY_LEAVES = BLOCKS.register("snowy_leaves", () -> new SnowyLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).sound(SoundType.GRASS).randomTicks().noOcclusion().isSuffocating((state, getter, pos) -> false).isViewBlocking((state, getter, pos) -> false)));
 	//aurora palace
 	public static final RegistryObject<Block> AURORA_BLOCK = BLOCKS.register("aurora_block", () -> new AuroraBrickBlock(BlockBehaviour.Properties.of(Material.ICE_SOLID).strength(10.0F, 6.0F)));
 	public static final RegistryObject<RotatedPillarBlock> AURORA_PILLAR = BLOCKS.register("aurora_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.ICE_SOLID).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));

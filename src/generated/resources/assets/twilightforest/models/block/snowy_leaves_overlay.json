@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "down": "twilightforest:block/stone_twist/twist_blank",
+    "east": "twilightforest:block/snowy_leaf_overlay",
+    "north": "twilightforest:block/snowy_leaf_overlay",
+    "south": "twilightforest:block/snowy_leaf_overlay",
+    "up": "twilightforest:block/stone_twist/twist_blank",
+    "west": "twilightforest:block/snowy_leaf_overlay"
+  }
+}

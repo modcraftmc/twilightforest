@@ -156,6 +156,14 @@ public class BlockstateGenerator extends BlockModelBuilders {
 		simpleBlock(TFBlocks.UNDERBRICK_FLOOR.get());
 		thorns();
 		thornRose();
+		ModelFile snowy = models().cube(TFBlocks.SNOWY_LEAVES.getId().getPath() + "_overlay",
+				prefix("block/stone_twist/twist_blank"), prefix("block/stone_twist/twist_blank"),
+				prefix("block/snowy_leaf_overlay"), prefix("block/snowy_leaf_overlay"),
+				prefix("block/snowy_leaf_overlay"), prefix("block/snowy_leaf_overlay")).renderType(CUTOUT);
+		ModelFile noSnow = models().withExistingParent(TFBlocks.SNOWY_LEAVES.getId().getPath(), new ResourceLocation("block/spruce_leaves")).renderType(CUTOUT_MIPPED);
+		getMultipartBuilder(TFBlocks.SNOWY_LEAVES.get()).part().modelFile(noSnow).addModel().end()
+				.part().modelFile(snowy).addModel().condition(SnowyLeavesBlock.SNOWY, true).end();
+
 		simpleBlock(TFBlocks.THORN_LEAVES.get(), models().withExistingParent("thorn_leaves", new ResourceLocation("block/oak_leaves")));
 		simpleBlock(TFBlocks.BEANSTALK_LEAVES.get(), models().withExistingParent("beanstalk_leaves", new ResourceLocation("block/azalea_leaves")));
 		simpleBlock(TFBlocks.HOLLOW_OAK_SAPLING.get(), models().cross(TFBlocks.HOLLOW_OAK_SAPLING.getId().getPath(), blockTexture(TFBlocks.HOLLOW_OAK_SAPLING.get())).renderType(CUTOUT));

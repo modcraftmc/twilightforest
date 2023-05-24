@@ -126,7 +126,7 @@ public class BlockTagGenerator extends IntrinsicHolderTagsProvider<Block> {
 		tag(BlockTags.LEAVES)
 				.add(TFBlocks.RAINBOW_OAK_LEAVES.get(), TFBlocks.TWILIGHT_OAK_LEAVES.get(), TFBlocks.CANOPY_LEAVES.get(), TFBlocks.MANGROVE_LEAVES.get(), TFBlocks.DARK_LEAVES.get())
 				.add(TFBlocks.TIME_LEAVES.get(), TFBlocks.TRANSFORMATION_LEAVES.get(), TFBlocks.MINING_LEAVES.get(), TFBlocks.SORTING_LEAVES.get())
-				.add(TFBlocks.THORN_LEAVES.get(), TFBlocks.BEANSTALK_LEAVES.get());
+				.add(TFBlocks.THORN_LEAVES.get(), TFBlocks.BEANSTALK_LEAVES.get(), TFBlocks.SNOWY_LEAVES.get());
 
 		tag(BlockTags.PLANKS)
 				.add(TFBlocks.TWILIGHT_OAK_PLANKS.get(), TFBlocks.CANOPY_PLANKS.get(), TFBlocks.MANGROVE_PLANKS.get(), TFBlocks.DARK_PLANKS.get())

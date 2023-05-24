@@ -44,6 +44,7 @@ public final class ColorHandler {
 
 			return ColorUtil.hsvToRGB(hsb[0], hsb[1] * 0.5F, Math.min(hsb[2] + 0.4F, 0.9F));
 		}, TFBlocks.AURORA_PILLAR.get(), TFBlocks.AURORA_SLAB.get(), TFBlocks.AURORALIZED_GLASS.get());
+		event.register((state, getter, pos, tintIndex) -> tintIndex == 0 ? 0Xc9ffea : 0XFFFFFF, TFBlocks.SNOWY_LEAVES.get());
 		event.register((state, getter, pos, tintIndex) -> {
 			if (tintIndex > 15) return 0xFFFFFF;
 

@@ -200,7 +200,7 @@ public class TreeConfigurations {
 	public static final TreeConfiguration BIG_SPRUCE = new TreeConfiguration.TreeConfigurationBuilder(
 			BlockStateProvider.simple(Blocks.SPRUCE_LOG),
 			new GiantTrunkPlacer(13, 2, 14),
-			BlockStateProvider.simple(Blocks.SPRUCE_LEAVES),
+			BlockStateProvider.simple(TFBlocks.SNOWY_LEAVES.get()),
 			new MegaPineFoliagePlacer(ConstantInt.of(0),
 					ConstantInt.of(0),
 					UniformInt.of(13, 17)),
@@ -249,7 +249,7 @@ public class TreeConfigurations {
 
 	public static final TFTreeFeatureConfig LARGE_WINTER = new TFTreeFeatureConfig.Builder(
 			BlockStateProvider.simple(Blocks.SPRUCE_LOG),
-			BlockStateProvider.simple(Blocks.SPRUCE_LEAVES),
+			BlockStateProvider.simple(TFBlocks.SNOWY_LEAVES.get()),
 			BlockStateProvider.simple(Blocks.SPRUCE_LOG),
 			BlockStateProvider.simple(TFBlocks.ROOT_BLOCK.get())
 	)

@@ -56,7 +56,7 @@ public class TFPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> PLACED_VANILLA_ROOTS = registerKey("vanilla_roots");
 	public static final ResourceKey<PlacedFeature> PLACED_WEBS = registerKey("webs");
 	public static final ResourceKey<PlacedFeature> PLACED_WOOD_ROOTS_SPREAD = registerKey("wood_roots");
-	public static final ResourceKey<PlacedFeature> PLACED_SNOW_UNDER_TREES = registerKey("snow_under_trees");
+	public static final ResourceKey<PlacedFeature> PLACED_IMPROVED_TOP_LAYER_FREEZE = registerKey("improved_top_layer_freeze");
 	public static final ResourceKey<PlacedFeature> PLACED_TF_OAK_FALLEN_LOG = registerKey("tf_oak_fallen_log");
 	public static final ResourceKey<PlacedFeature> PLACED_CANOPY_FALLEN_LOG = registerKey("canopy_fallen_log");
 	public static final ResourceKey<PlacedFeature> PLACED_MANGROVE_FALLEN_LOG = registerKey("mangrove_fallen_log");
@@ -173,7 +173,7 @@ public class TFPlacedFeatures {
 		context.register(PLACED_WEBS, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.WEBS), ImmutableList.<PlacementModifier>builder().add(PlacementUtils.HEIGHTMAP_WORLD_SURFACE, CountPlacement.of(60), InSquarePlacement.spread(), BiomeFilter.biome()).build()));
 		context.register(PLACED_WOOD_ROOTS_SPREAD, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.WOOD_ROOTS_SPREAD), tfFeatureCheckArea(AvoidLandmarkModifier.checkUnderground(), 40, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(0))).build()));
 
-		context.register(PLACED_SNOW_UNDER_TREES, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.SNOW_UNDER_TREES), ImmutableList.<PlacementModifier>builder().add(BiomeFilter.biome()).build()));
+		context.register(PLACED_IMPROVED_TOP_LAYER_FREEZE, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.IMPROVED_TOP_LAYER_FREEZE), ImmutableList.<PlacementModifier>builder().add(BiomeFilter.biome()).build()));
 		context.register(PLACED_TF_OAK_FALLEN_LOG, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.TF_OAK_FALLEN_LOG), hollowLog(AvoidLandmarkModifier.checkSurface()).build()));
 		context.register(PLACED_CANOPY_FALLEN_LOG, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.CANOPY_FALLEN_LOG), hollowLog(AvoidLandmarkModifier.checkSurface()).build()));
 		context.register(PLACED_MANGROVE_FALLEN_LOG, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.MANGROVE_FALLEN_LOG), hollowLog(AvoidLandmarkModifier.checkSurface()).build()));
@@ -222,7 +222,7 @@ public class TFPlacedFeatures {
 		context.register(PLACED_DARK_FOREST_TREE_MIX, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.DARK_FOREST_TREES), darkForestTreeCheck(PlacementUtils.countExtra(3, 0.1F, 1))));
 		context.register(PLACED_HIGHLANDS_TREES, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.HIGHLANDS_TREES), tfTreeCheckArea(PlacementUtils.countExtra(3, 0.1F, 1), Blocks.SPRUCE_SAPLING.defaultBlockState())));
 		context.register(PLACED_ENCHANTED_FOREST_TREES, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.ENCHANTED_FOREST_TREES), tfTreeCheckArea(PlacementUtils.countExtra(5, 0.1F, 1), TFBlocks.RAINBOW_OAK_SAPLING.get().defaultBlockState())));
-		context.register(PLACED_SNOWY_FOREST_TREES, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.SNOWY_FOREST_TREES), List.of(PlacementUtils.countExtra(10, 0.1F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, AvoidLandmarkModifier.checkSurface(), EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.not(BlockPredicate.matchesBlocks(Blocks.POWDER_SNOW)), 8), BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.SNOW_BLOCK, Blocks.POWDER_SNOW)), BiomeFilter.biome())));
+		context.register(PLACED_SNOWY_FOREST_TREES, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.SNOWY_FOREST_TREES), List.of(PlacementUtils.countExtra(10, 0.1F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, AvoidLandmarkModifier.checkSurface(), EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.not(BlockPredicate.matchesBlocks(Blocks.POWDER_SNOW)), 8), BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.SNOW_BLOCK, Blocks.POWDER_SNOW, Blocks.SNOW)), BiomeFilter.biome())));
 		context.register(PLACED_VANILLA_TF_TREES, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.VANILLA_TF_TREES), tfTreeCheckArea(TFBlocks.TWILIGHT_OAK_SAPLING.get().defaultBlockState())));
 		context.register(PLACED_VANILLA_TF_BIG_MUSH, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.VANILLA_TF_BIG_MUSH), tfTreeCheckArea(TFBlocks.CANOPY_SAPLING.get().defaultBlockState())));
 

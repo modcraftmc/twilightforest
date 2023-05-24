@@ -1,0 +1,17 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "twilightforest:block/snowy_leaves"
+      }
+    },
+    {
+      "apply": {
+        "model": "twilightforest:block/snowy_leaves_overlay"
+      },
+      "when": {
+        "snowy": "true"
+      }
+    }
+  ]
+}

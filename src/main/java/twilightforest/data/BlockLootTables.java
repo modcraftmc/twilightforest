@@ -77,6 +77,7 @@ public class BlockLootTables extends BlockLootSubProvider {
 		dropSelf(TFBlocks.THORN_ROSE.get());
 		add(TFBlocks.THORN_LEAVES.get(), silkAndStick(TFBlocks.THORN_LEAVES.get(), Items.STICK, RARE_SAPLING_DROP_RATES));
 		add(TFBlocks.BEANSTALK_LEAVES.get(), silkAndStick(TFBlocks.BEANSTALK_LEAVES.get(), TFItems.MAGIC_BEANS.get(), RARE_SAPLING_DROP_RATES));
+		add(TFBlocks.SNOWY_LEAVES.get(), (p_251695_) -> this.createLeavesDrops(p_251695_, Blocks.SPRUCE_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
 		dropSelf(TFBlocks.DEADROCK.get());
 		dropSelf(TFBlocks.CRACKED_DEADROCK.get());
 		dropSelf(TFBlocks.WEATHERED_DEADROCK.get());

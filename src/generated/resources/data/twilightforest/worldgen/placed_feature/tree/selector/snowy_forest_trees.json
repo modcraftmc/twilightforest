@@ -54,7 +54,8 @@
         "type": "minecraft:matching_blocks",
         "blocks": [
           "minecraft:snow_block",
-          "minecraft:powder_snow"
+          "minecraft:powder_snow",
+          "minecraft:snow"
         ],
         "offset": [
           0,
