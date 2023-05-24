@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "layers=0": {
+      "model": "twilightforest:block/glacialis"
+    },
+    "layers=1": {
+      "model": "twilightforest:block/glacialis_flower1"
+    },
+    "layers=2": {
+      "model": "twilightforest:block/glacialis_flower2"
+    },
+    "layers=3": {
+      "model": "twilightforest:block/glacialis_flower3"
+    },
+    "layers=4": {
+      "model": "twilightforest:block/glacialis_flower4"
+    },
+    "layers=5": {
+      "model": "twilightforest:block/glacialis_flower5"
+    },
+    "layers=6": {
+      "model": "twilightforest:block/glacialis_flower6"
+    },
+    "layers=7": {
+      "model": "twilightforest:block/glacialis_flower7"
+    },
+    "layers=8": {
+      "model": "twilightforest:block/glacialis_flower8"
+    }
+  }
+}

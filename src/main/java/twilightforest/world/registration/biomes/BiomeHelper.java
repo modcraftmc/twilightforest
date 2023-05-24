@@ -265,6 +265,7 @@ public abstract class BiomeHelper {
 
 		biome.addFeature(GenerationStep.Decoration.LAKES, TFPlacedFeatures.PLACED_LAKE_WATER);
 		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PLACED_SPRUCE_FALLEN_LOG);
+		biome.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, TFPlacedFeatures.PLACED_GLACIALIS_PATCH);
 
 		biome.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, TFPlacedFeatures.PLACED_IMPROVED_TOP_LAYER_FREEZE);
 

@@ -1,0 +1,24 @@
+{
+  "parent": "minecraft:block/cross",
+  "children": {
+    "glacialis_flower8": {
+      "parent": "minecraft:block/cross",
+      "render_type": "minecraft:cutout",
+      "textures": {
+        "cross": "twilightforest:block/glacialis"
+      }
+    },
+    "glacialis_snow_layer_8": {
+      "parent": "minecraft:block/snow_block"
+    }
+  },
+  "item_render_order": [
+    "glacialis_flower8",
+    "glacialis_snow_layer_8"
+  ],
+  "loader": "forge:composite",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "twilightforest:block/glacialis"
+  }
+}

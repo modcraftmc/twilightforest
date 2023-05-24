@@ -5,6 +5,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
@@ -13,12 +14,21 @@ import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionBrewing;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
+import net.minecraftforge.common.crafting.PartialNBTIngredient;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -112,6 +122,7 @@ public class TwilightForestMod {
 		TFMobEffects.MOB_EFFECTS.register(modbus);
 		TFParticleType.PARTICLE_TYPES.register(modbus);
 		TFPOITypes.POIS.register(modbus);
+		TFPotions.POTIONS.register(modbus);
 		TFFeatureModifiers.PLACEMENT_MODIFIERS.register(modbus);
 		TFRecipes.RECIPE_SERIALIZERS.register(modbus);
 		TFRecipes.RECIPE_TYPES.register(modbus);
@@ -186,6 +197,11 @@ public class TwilightForestMod {
 			TFSounds.registerParrotSounds();
 			TFDispenserBehaviors.init();
 			TFStats.init();
+
+			//this one is a bit awkward because for some reason blocks dont work with vanilla's methods. Kinda dumb
+			BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)), Ingredient.of(TFBlocks.GLACIALIS.get().asItem()), PotionUtils.setPotion(new ItemStack(Items.POTION), TFPotions.FROSTED.get()));
+			PotionBrewing.addMix(TFPotions.FROSTED.get(), Items.REDSTONE, TFPotions.LONG_FROSTED.get());
+			PotionBrewing.addMix(TFPotions.FROSTED.get(), Items.GLOWSTONE_DUST, TFPotions.STRONG_FROSTED.get());
 
 			CauldronInteraction.WATER.put(TFItems.ARCTIC_HELMET.get(), CauldronInteraction.DYED_ITEM);
 			CauldronInteraction.WATER.put(TFItems.ARCTIC_CHESTPLATE.get(), CauldronInteraction.DYED_ITEM);

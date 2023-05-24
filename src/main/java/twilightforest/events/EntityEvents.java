@@ -8,20 +8,17 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.AbstractSkullBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SkullBlock;
-import net.minecraft.world.level.block.WallSkullBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.SkullBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -39,10 +36,7 @@ import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import twilightforest.TFConfig;
 import twilightforest.TwilightForestMod;
-import twilightforest.block.AbstractLightableBlock;
-import twilightforest.block.AbstractSkullCandleBlock;
-import twilightforest.block.SkullCandleBlock;
-import twilightforest.block.WallSkullCandleBlock;
+import twilightforest.block.*;
 import twilightforest.block.entity.KeepsakeCasketBlockEntity;
 import twilightforest.block.entity.SkullCandleBlockEntity;
 import twilightforest.enchantment.ChillAuraEnchantment;
@@ -166,6 +160,33 @@ public class EntityEvents {
 				}
 			}
 		}
+	}
+
+	@SubscribeEvent
+	public static void handleSnowloggingInteractions(PlayerInteractEvent.RightClickBlock event) {
+		ItemStack stack = event.getItemStack();
+		Level level = event.getLevel();
+		BlockPos pos = event.getPos();
+		BlockState state = level.getBlockState(pos);
+
+		if (state.is(Blocks.GRASS) && stack.is(Items.SNOW)) {
+			level.setBlockAndUpdate(pos, TFBlocks.SNOWLOGGED_GRASS.get().defaultBlockState().setValue(SnowLoggable.SNOW_LAYERS, 1));
+			handlePlaceInteraction(event, Blocks.SNOW.defaultBlockState().getSoundType());
+		} else if (state.getBlock() instanceof SnowLoggable && state.getValue(SnowLoggable.SNOW_LAYERS) < 8 && stack.is(Items.SNOW)) {
+			level.setBlockAndUpdate(pos, state.setValue(SnowLoggable.SNOW_LAYERS, state.getValue(SnowLoggable.SNOW_LAYERS) + 1));
+			handlePlaceInteraction(event, Blocks.SNOW.defaultBlockState().getSoundType());
+		} else if (state.is(Blocks.SNOW) && stack.getItem() instanceof BlockItem block && block.getBlock() instanceof SnowLoggable) {
+			level.setBlockAndUpdate(pos, block.getBlock().defaultBlockState().setValue(SnowLoggable.SNOW_LAYERS, state.getValue(SnowLayerBlock.LAYERS)));
+			handlePlaceInteraction(event, block.getBlock().defaultBlockState().getSoundType());
+		}
+	}
+
+	private static void handlePlaceInteraction(PlayerInteractEvent.RightClickBlock event, SoundType type) {
+		if (!event.getEntity().getAbilities().instabuild) event.getItemStack().shrink(1);
+		event.getEntity().swing(event.getHand());
+		event.getLevel().playLocalSound(event.getPos(), type.getPlaceSound(), SoundSource.BLOCKS, (type.getVolume() + 1.0F) / 2.0F, type.getPitch() * 0.8F, false);
+		//this is to prevent anything from being placed afterwords
+		event.setCanceled(true);
 	}
 
 	/**

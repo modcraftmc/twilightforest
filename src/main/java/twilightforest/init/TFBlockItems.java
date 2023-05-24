@@ -142,6 +142,7 @@ public class TFBlockItems {
 			register(event, blockItem(TFBlocks.ANTIBUILDER));
 			register(event, blockItem(TFBlocks.CARMINITE_REACTOR));
 			register(event, blockItem(TFBlocks.GHAST_TRAP));
+			register(event, blockItem(TFBlocks.GLACIALIS));
 			register(event, blockItem(TFBlocks.AURORA_BLOCK));
 			register(event, blockItem(TFBlocks.AURORA_PILLAR));
 			register(event, blockItem(TFBlocks.AURORA_SLAB));

@@ -14,6 +14,7 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HugeMushroomBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -210,6 +211,7 @@ public final class TFConfiguredFeatures {
 					)), BlockPredicate.ONLY_IN_AIR_PREDICATE)));
 
 	public static final ResourceKey<ConfiguredFeature<?, ?>> FLOWER_PLACER_ALT = registerKey("flower_placer_alt");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> GLACIALIS_PATCH = registerKey("glacialis_patch");
 
 	//music!
 	public static final Music TFMUSICTYPE = new Music(TFSounds.MUSIC.getHolder().orElseThrow(), 1200, 12000, true);
@@ -334,6 +336,7 @@ public final class TFConfiguredFeatures {
 		context.register(CANOPY_MUSHROOMS_DENSE, new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(PlacementUtils.inlinePlaced(features.getOrThrow(BROWN_CANOPY_MUSHROOM_TREE)), 0.675f), new WeightedPlacedFeature(PlacementUtils.inlinePlaced(features.getOrThrow(RED_CANOPY_MUSHROOM_TREE)), 0.225f)), PlacementUtils.inlinePlaced(features.getOrThrow(DUMMY_TREE)))));
 		context.register(FLOWER_PLACER, new ConfiguredFeature<>(Feature.FLOWER, SMALL_FLOWER_CONFIG));
 		context.register(FLOWER_PLACER_ALT, new ConfiguredFeature<>(Feature.FLOWER, SMALL_FLOWER_CONFIG_ALT));
+		context.register(GLACIALIS_PATCH, new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(32, 8, 5, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(TFBlocks.GLACIALIS.get()))))));
 	}
 
 	private static void registerTemplateFeatures(BootstapContext<ConfiguredFeature<?, ?>> context) {

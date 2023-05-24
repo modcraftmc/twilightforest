@@ -144,7 +144,7 @@ public class ItemModelGenerator extends ItemModelProvider {
 		toBlock(TFBlocks.MOSSY_MAZESTONE.get());
 		toBlock(TFBlocks.MAZESTONE_MOSAIC.get());
 		toBlock(TFBlocks.MAZESTONE_BORDER.get());
-		singleTex(TFItems.RED_THREAD);
+		generated(TFBlocks.RED_THREAD.getId().getPath(), prefix("item/" + TFBlocks.RED_THREAD.getId().getPath()));
 		toBlock(TFBlocks.HEDGE.get());
 		toBlock(TFBlocks.ROOT_BLOCK.get());
 		toBlock(TFBlocks.LIVEROOT_BLOCK.get());
@@ -170,6 +170,7 @@ public class ItemModelGenerator extends ItemModelProvider {
 		generated(TFBlocks.TORCHBERRY_PLANT.getId().getPath(), prefix("block/torchberry_plant"));
 		generated(TFBlocks.ROOT_STRAND.getId().getPath(), prefix("block/root_strand"));
 		generated(TFBlocks.FALLEN_LEAVES.getId().getPath(), new ResourceLocation("block/oak_leaves"));
+		generated(TFBlocks.GLACIALIS.getId().getPath(), prefix("block/glacialis"));
 		toBlock(TFBlocks.SMOKER.get());
 		toBlock(TFBlocks.FIRE_JET.get());
 		toBlock(TFBlocks.ENCASED_SMOKER.get());

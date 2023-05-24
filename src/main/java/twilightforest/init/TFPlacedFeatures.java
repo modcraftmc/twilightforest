@@ -86,6 +86,7 @@ public class TFPlacedFeatures {
 
 	public static final ResourceKey<PlacedFeature> PLACED_FLOWER_PLACER = registerKey("flower_placer");
 	public static final ResourceKey<PlacedFeature> PLACED_FLOWER_PLACER_ALT = registerKey("flower_placer_alt");
+	public static final ResourceKey<PlacedFeature> PLACED_GLACIALIS_PATCH = registerKey("glacialis_patch");
 
 	//Trees!
 	public static final ResourceKey<PlacedFeature> PLACED_DEAD_CANOPY_TREE = registerKey("tree/dead_canopy_tree");
@@ -203,6 +204,7 @@ public class TFPlacedFeatures {
 
 		context.register(PLACED_FLOWER_PLACER, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.FLOWER_PLACER), ImmutableList.<PlacementModifier>builder().add(PlacementUtils.HEIGHTMAP_WORLD_SURFACE, CountPlacement.of(3), InSquarePlacement.spread(), RarityFilter.onAverageOnceEvery(2), BiomeFilter.biome()).build()));
 		context.register(PLACED_FLOWER_PLACER_ALT, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.FLOWER_PLACER_ALT), ImmutableList.<PlacementModifier>builder().add(PlacementUtils.HEIGHTMAP_WORLD_SURFACE, CountPlacement.of(3), InSquarePlacement.spread(), RarityFilter.onAverageOnceEvery(2), BiomeFilter.biome()).build()));
+		context.register(PLACED_GLACIALIS_PATCH, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.GLACIALIS_PATCH), ImmutableList.<PlacementModifier>builder().add(PlacementUtils.HEIGHTMAP_WORLD_SURFACE, InSquarePlacement.spread(), RarityFilter.onAverageOnceEvery(3), BiomeFilter.biome()).build()));
 
 		context.register(PLACED_DEAD_CANOPY_TREE, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.DEAD_CANOPY_TREE), tfTreeCheckArea(PlacementUtils.countExtra(2, 0.1F, 1), TFBlocks.CANOPY_SAPLING.get().defaultBlockState())));
 		context.register(PLACED_MANGROVE_TREE, new PlacedFeature(features.getOrThrow(TFConfiguredFeatures.MANGROVE_TREE), List.of(PlacementUtils.countExtra(3, 0.1F, 1), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(6), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, AvoidLandmarkModifier.checkSurface(), PlacementUtils.filteredByBlockSurvival(TFBlocks.MANGROVE_SAPLING.get()), BiomeFilter.biome())));

@@ -45,6 +45,11 @@ public class SnowUnderTreeFeature extends Feature<NoneFeatureConfiguration> {
 					level.setBlock(currentPos.below(), Blocks.ICE.defaultBlockState(), 2);
 				}
 
+				//TF - add snow layers onto Snowloggable blocks
+				if (level.getBlockState(currentPos).getBlock() instanceof SnowLoggable && !biome.warmEnoughToRain(currentPos)) {
+					level.setBlock(currentPos, level.getBlockState(currentPos).setValue(SnowLoggable.SNOW_LAYERS, 1), 2);
+				}
+
 				if (biome.shouldSnow(level, currentPos)) {
 					level.setBlock(currentPos, Blocks.SNOW.defaultBlockState(), 2);
 					BlockState belowState = level.getBlockState(currentPos.below());
@@ -53,6 +58,7 @@ public class SnowUnderTreeFeature extends Feature<NoneFeatureConfiguration> {
 					}
 
 					//TF - add a system for placing snow on covered leaves and ground underneath trees
+					//also adds snow layers onto Snowloggable blocks that live under trees
 					if (level.getBlockState(currentPos.below()).getBlock() instanceof LeavesBlock) {
 						//check every block between our current position and the ground
 						for (int y = currentPos.getY(); y > level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z) - 1; y--) {
@@ -60,6 +66,9 @@ public class SnowUnderTreeFeature extends Feature<NoneFeatureConfiguration> {
 
 							if (level.getBlockState(currentSnowPos).isAir()) {
 								BlockState stateBelow = level.getBlockState(currentSnowPos.below());
+								if (stateBelow.getBlock() instanceof SnowLoggable) {
+									level.setBlock(currentSnowPos.below(), stateBelow.setValue(SnowLoggable.SNOW_LAYERS, 1), 2);
+								}
 
 								if (Blocks.SNOW.defaultBlockState().canSurvive(level, currentSnowPos)) {
 									int layers = level.getBlockState(currentSnowPos.above()).is(BlockTags.LEAVES) && level.getBlockState(currentSnowPos.relative(Direction.Plane.HORIZONTAL.getRandomDirection(level.getRandom()))).is(BlockTags.LEAVES) ? 2 : 1;

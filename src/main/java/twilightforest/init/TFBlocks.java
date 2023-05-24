@@ -139,6 +139,8 @@ public class TFBlocks {
 
 	//snowy forest
 	public static final RegistryObject<Block> SNOWY_LEAVES = BLOCKS.register("snowy_leaves", () -> new SnowyLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).sound(SoundType.GRASS).randomTicks().noOcclusion().isSuffocating((state, getter, pos) -> false).isViewBlocking((state, getter, pos) -> false)));
+	public static final RegistryObject<Block> GLACIALIS = BLOCKS.register("glacialis", () -> new GlacialisFlowerBlock(BlockBehaviour.Properties.of(Material.PLANT).instabreak().sound(SoundType.GRASS).randomTicks()));
+
 	//aurora palace
 	public static final RegistryObject<Block> AURORA_BLOCK = BLOCKS.register("aurora_block", () -> new AuroraBrickBlock(BlockBehaviour.Properties.of(Material.ICE_SOLID).strength(10.0F, 6.0F)));
 	public static final RegistryObject<RotatedPillarBlock> AURORA_PILLAR = BLOCKS.register("aurora_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.ICE_SOLID).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
@@ -542,6 +544,7 @@ public class TFBlocks {
 	public static final RegistryObject<FlowerPotBlock> POTTED_MAYAPPLE = BLOCKS.register("potted_mayapple", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, MAYAPPLE, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
 	public static final RegistryObject<FlowerPotBlock> POTTED_FIDDLEHEAD = BLOCKS.register("potted_fiddlehead", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FIDDLEHEAD, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
 	public static final RegistryObject<FlowerPotBlock> POTTED_MUSHGLOOM = BLOCKS.register("potted_mushgloom", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, MUSHGLOOM, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
+	public static final RegistryObject<FlowerPotBlock> POTTED_GLACIALIS = BLOCKS.register("potted_glacialis", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, GLACIALIS, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
 	public static final RegistryObject<FlowerPotBlock> POTTED_THORN = BLOCKS.register("potted_thorn", () -> new SpecialFlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BROWN_THORNS, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
 	public static final RegistryObject<FlowerPotBlock> POTTED_GREEN_THORN = BLOCKS.register("potted_green_thorn", () -> new SpecialFlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, GREEN_THORNS, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
 	public static final RegistryObject<FlowerPotBlock> POTTED_DEAD_THORN = BLOCKS.register("potted_dead_thorn", () -> new SpecialFlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BURNT_THORNS, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
@@ -692,5 +695,6 @@ public class TFBlocks {
 		pot.addPlant(BROWN_THORNS.getId(), POTTED_THORN);
 		pot.addPlant(GREEN_THORNS.getId(), POTTED_GREEN_THORN);
 		pot.addPlant(BURNT_THORNS.getId(), POTTED_DEAD_THORN);
+		pot.addPlant(GLACIALIS.getId(), POTTED_GLACIALIS);
 	}
 }
