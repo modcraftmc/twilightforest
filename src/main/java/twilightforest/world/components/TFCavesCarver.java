@@ -25,14 +25,13 @@ import net.minecraft.world.level.material.Fluids;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import twilightforest.init.TFBlocks;
 
-import java.util.Random;
 import java.util.function.Function;
 
 //Framework taken from CaveWorldCarver, everything worth knowing is documented for easier changes in the future
 public class TFCavesCarver extends WorldCarver<CaveCarverConfiguration> {
 
 	private final boolean isHighlands;
-	private final Random rand = new Random();
+	private final RandomSource rand = RandomSource.create();
 
 	public TFCavesCarver(Codec<CaveCarverConfiguration> codec, boolean isHighlands) {
 		super(codec);
@@ -163,7 +162,7 @@ public class TFCavesCarver extends WorldCarver<CaveCarverConfiguration> {
 	}
 
 	protected void createTunnel(CarvingContext ctx, CaveCarverConfiguration config, ChunkAccess access, Function<BlockPos, Holder<Biome>> biomePos, long seed, Aquifer aquifer, double posX, double posY, double posZ, double horizMult, double vertMult, float thickness, float yaw, float pitch, int branchIndex, int branchCount, double horizToVertRatio, CarvingMask mask, WorldCarver.CarveSkipChecker checker) {
-		Random random = new Random(seed);
+		RandomSource random = RandomSource.create(seed);
 		int i = random.nextInt(branchCount / 2) + branchCount / 4;
 		boolean flag = random.nextInt(6) == 0;
 		float f = 0.0F;
@@ -198,6 +197,11 @@ public class TFCavesCarver extends WorldCarver<CaveCarverConfiguration> {
 			}
 		}
 
+	}
+
+	@Override
+	protected boolean canReplaceBlock(CaveCarverConfiguration config, BlockState state) {
+		return !state.is(BlockTags.ICE) && super.canReplaceBlock(config, state);
 	}
 
 	private static boolean shouldSkip(double posX, double posY, double posZ, double minY) {
