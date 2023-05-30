@@ -217,6 +217,10 @@ public class LangGenerator extends TFLangProvider {
 		this.addBlock(TFBlocks.FAKE_GOLD, "Gold Block");
 		this.addBlock(TFBlocks.EXPERIMENT_115, "Experiment 115");
 
+		this.addBlock(TFBlocks.GLACIALIS, "Glacialis");
+		this.addBlock(TFBlocks.POTTED_GLACIALIS, "Potted Glacialis");
+		this.addBlock(TFBlocks.SNOWY_LEAVES, "Spruce Leaves");
+
 		this.addBlock(TFBlocks.AURORA_BLOCK, "Aurora Block");
 		this.addBlock(TFBlocks.AURORA_SLAB, "Aurora Slab");
 		this.addBlock(TFBlocks.AURORA_PILLAR, "Aurora Pillar");

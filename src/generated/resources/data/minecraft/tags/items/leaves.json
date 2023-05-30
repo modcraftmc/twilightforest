@@ -1,6 +1,5 @@
 {
   "values": [
-    "twilightforest:rainbow_oak_leaves",
     "twilightforest:twilight_oak_leaves",
     "twilightforest:canopy_leaves",
     "twilightforest:mangrove_leaves",
@@ -9,6 +8,7 @@
     "twilightforest:transformation_leaves",
     "twilightforest:mining_leaves",
     "twilightforest:sorting_leaves",
+    "twilightforest:rainbow_oak_leaves",
     "twilightforest:thorn_leaves",
     "twilightforest:beanstalk_leaves"
   ]

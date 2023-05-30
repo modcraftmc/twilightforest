@@ -95,7 +95,10 @@ public class ItemTagGenerator extends ItemTagsProvider {
 				.addTag(TIME_LOGS).addTag(TRANSFORMATION_LOGS).addTag(MINING_LOGS).addTag(SORTING_LOGS);
 
 		this.copy(BlockTags.SAPLINGS, ItemTags.SAPLINGS);
-		this.copy(BlockTags.LEAVES, ItemTags.LEAVES);
+		this.tag(ItemTags.LEAVES)
+				.add(TFBlocks.TWILIGHT_OAK_LEAVES.get().asItem(), TFBlocks.CANOPY_LEAVES.get().asItem(), TFBlocks.MANGROVE_LEAVES.get().asItem(), TFBlocks.DARK_LEAVES.get().asItem())
+				.add(TFBlocks.TIME_LEAVES.get().asItem(), TFBlocks.TRANSFORMATION_LEAVES.get().asItem(), TFBlocks.MINING_LEAVES.get().asItem(), TFBlocks.SORTING_LEAVES.get().asItem())
+				.add(TFBlocks.RAINBOW_OAK_LEAVES.get().asItem(), TFBlocks.THORN_LEAVES.get().asItem(), TFBlocks.BEANSTALK_LEAVES.get().asItem());
 
 		this.copy(BlockTags.PLANKS, ItemTags.PLANKS);
 
