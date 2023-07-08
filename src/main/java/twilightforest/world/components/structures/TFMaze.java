@@ -329,7 +329,7 @@ public class TFMaze {
 	 */
 	private void putWallBlock(WorldGenLevel world, int x, int y, int z, TFStructureComponentOld component, BoundingBox sbb) {
 		if (wallBlocks != null) {
-			wallBlocks.next(rand, x, y, z, true);
+			wallBlocks.next(world.getRandom(), x, y, z, true);
 			component.placeBlock(world, wallBlocks.getNext(), x, y, z, sbb);
 		} else {
 			component.placeBlock(world, wallBlockState, x, y, z, sbb);
