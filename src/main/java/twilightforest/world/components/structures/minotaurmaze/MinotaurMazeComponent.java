@@ -57,7 +57,7 @@ public class MinotaurMazeComponent extends TFStructureComponentOld {
 		this.boundingBox = feature.getComponentToAddBoundingBox(x, y, z, -getRadius(), 0, -getRadius(), getRadius() * 2 + 2, 5, getRadius() * 2 + 2, Direction.SOUTH);
 
 		// make maze object
-		maze = new TFMaze(getMazeSize(), getMazeSize(), RandomSource.create());
+		maze = new TFMaze(getMazeSize(), getMazeSize(), random);
 
 		// set the seed to a fixed value based on this maze's x and z
 		setFixedMazeSeed();
