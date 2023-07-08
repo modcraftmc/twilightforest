@@ -61,7 +61,7 @@ public class TFMaze {
 
 	public final RandomSource rand;
 
-	public TFMaze(int cellsWidth, int cellsDepth) {
+	public TFMaze(int cellsWidth, int cellsDepth, RandomSource rand) {
 		// default values
 		oddBias = 3;
 		evenBias = 1;
@@ -83,7 +83,7 @@ public class TFMaze {
 		this.rawDepth = depth * 2 + 1;
 		storage = new int[rawWidth * rawDepth];
 
-		rand = RandomSource.create();
+		this.rand = rand;
 	}
 
 	/**
