@@ -289,7 +289,7 @@ public class TFMaze {
 					int mdz = dz + (z / 2 * (evenBias + oddBias));
 
 					if (isEven(x) && isEven(z)) {
-						if (shouldTorch(x, z) && component.getBlock(world, mdx, mdy, mdz, sbb).getBlock() == wallBlockState.getBlock()) {
+						if (shouldTorch(x, z, world.getRandom()) && component.getBlock(world, mdx, mdy, mdz, sbb).getBlock() == wallBlockState.getBlock()) {
 							component.placeBlock(world, torchBlockState, mdx, mdy, mdz, sbb);
 						}
 					}
@@ -373,7 +373,7 @@ public class TFMaze {
 	/**
 	 * Should we put a torch here?  Intended to be called on the in-between spots where x and y are even.
 	 */
-	public boolean shouldTorch(int rx, int rz) {
+	public boolean shouldTorch(int rx, int rz, RandomSource randomSource) {
 		// if there is out of bounds in any direction, no
 		if (getRaw(rx + 1, rz) == OOB || getRaw(rx - 1, rz) == OOB || getRaw(rx, rz + 1) == OOB || getRaw(rx, rz - 1) == OOB) {
 			return false;
@@ -387,7 +387,7 @@ public class TFMaze {
 		// otherwise, I suppose yes
 
 		// check rarity
-		return rand.nextFloat() <= this.torchRarity;
+		return randomSource.nextFloat() <= this.torchRarity;
 	}
 
 	/**
