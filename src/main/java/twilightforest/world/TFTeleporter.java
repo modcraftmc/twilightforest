@@ -93,7 +93,7 @@ public class TFTeleporter implements ITeleporter {
 
 						// skip chunks that aren't generated
 						ChunkPos chunkPos = new ChunkPos(pos.offset(i1, 0, j1));
-						if (!world.getChunkSource().chunkMap.isExistingChunkFull(chunkPos)) {
+						if (!world.getChunkSource().isPositionTicking(chunkPos.toLong())) {
 							continue;
 						}
 
